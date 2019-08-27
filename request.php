@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Content-type');
 
-//require_once ('vendor/autoload.php');
+require_once ('vendor/autoload.php');
 
 use com\realexpayments\hpp\sdk\domain\HppRequest;
 use com\realexpayments\hpp\sdk\RealexHpp;
