@@ -1,3 +1,4 @@
+<?php
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Content-type');
 
@@ -48,3 +49,4 @@ try {
 } catch (ApiException $e) {
         // TODO: Add your error handling here
 }
+?>
