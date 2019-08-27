@@ -1,3 +1,6 @@
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: Content-type');
+
 // configure client, request and HPP settings
 $config = new ServicesConfig();
 $config->merchantId = "MerchantId";
