@@ -50,5 +50,6 @@ try {
         
 } catch (ApiException $e) {
         // TODO: Add your error handling here
+        return $e->getMessage();
 }
 ?>
