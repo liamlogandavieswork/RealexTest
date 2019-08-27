@@ -4,7 +4,7 @@ header('Access-Control-Allow-Headers: Content-type');
 
 // configure client, request and HPP settings
 $config = new ServicesConfig();
-$config->merchantId = "MerchantId";
+$config->merchantId = "codectest";
 $config->accountId = "internet";
 $config->sharedSecret = "secret";
 $config->serviceUrl = "https://pay.sandbox.realexpayments.com/pay";
