@@ -2,6 +2,13 @@
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Content-type');
 
+use com\realexpayments\hpp\sdk\domain\HppRequest;
+use com\realexpayments\hpp\sdk\RealexHpp;
+use com\realexpayments\hpp\sdk\RealexValidationException;
+use com\realexpayments\hpp\sdk\RealexException;
+
+date_default_timezone_set('Europe/Dublin');
+
 // configure client, request and HPP settings
 $config = new ServicesConfig();
 $config->merchantId = "codectest";
