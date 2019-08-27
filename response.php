@@ -45,17 +45,17 @@ $realexHpp = new RealexHpp($RealexSecret);
 try {
 	// CREATE PAYMENT RECORD IN CRM
 	$paymentDataArray = array(
-		'codec_contact@odata.bind' => "/contacts($contactId)",
-		'codec_name' => 'Payment for: ' . $InvoiceName,
-		'codec_paymentdate' => date("Y-m-d"),
-		'codec_Invoice@odata.bind' => "/invoices($InvoiceId)",
-		'codec_paymentamount' => $amount/100,
-		'codec_currency' => $currencyId,
-		'codec_transactionstatusmessage' => 'Pending...');
+		'new_contact@odata.bind' => "/contacts($contactId)",
+		'new_name' => 'Payment for: ' . $InvoiceName,
+		'new_paymentdate' => date("Y-m-d"),
+		'new_Invoice@odata.bind' => "/invoices($InvoiceId)",
+		'new_paymentamount' => $amount/100,
+		'new_currency' => $currencyId,
+		'new_transactionstatusmessage' => 'Pending...');
 
 	$newPaymentData = json_encode($paymentDataArray);
 
-	$creationResponse = useWebApi("POST", $newPaymentData, "codec_payments", $config, $configParams);
+	$creationResponse = useWebApi("POST", $newPaymentData, "new_payments", $config, $configParams);
 
 	$paymentId = getCreatedPaymentGuid($creationResponse);
 
@@ -69,13 +69,13 @@ try {
 
 	//UPDATE RECORD IN CRM WITH REALEX RESPONSE
 	if ($result == '00') {
-		$updatePaymentArray = array('codec_transactionstatusmessage' => 'Payment Succeeded.',
-			'codec_transactioncompleted' => true,
-			'codec_transactionid' => $orderID);
+		$updatePaymentArray = array('new_transactionstatusmessage' => 'Payment Succeeded.',
+			'new_transactioncompleted' => true,
+			'new_transactionid' => $orderID);
 
 		$updatePaymentData = json_encode($updatePaymentArray);
 
-		useWebApi("PATCH", $updatePaymentData, "codec_payments(".$paymentId.")", $config, $configParams);
+		useWebApi("PATCH", $updatePaymentData, "new_payments(".$paymentId.")", $config, $configParams);
 
 		$serverError = "false";
 		$newURL = "{$PortalSuccessURL}?id=".$paymentId;
@@ -84,11 +84,11 @@ try {
 		exit();
 	}
 	else {
-		$updatePaymentArray = array('codec_transactionstatusmessage' => $message);
+		$updatePaymentArray = array('new_transactionstatusmessage' => $message);
 
 		$updatePaymentData = json_encode($updatePaymentArray);
 
-		useWebApi("PATCH", $updatePaymentData, "codec_payments(".$paymentId.")", $config, $configParams);
+		useWebApi("PATCH", $updatePaymentData, "new_payments(".$paymentId.")", $config, $configParams);
 
 		$serverError = "true";
 		$newURL = "{$PortalSuccessURL}?id=".$paymentId;
