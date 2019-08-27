@@ -45,6 +45,7 @@ try {
         ->serialize();
         
         // TODO: pass the HPP request JSON to the JavaScript, iOS or Android Library
+        return $hppJson;
         
 } catch (ApiException $e) {
         // TODO: Add your error handling here
