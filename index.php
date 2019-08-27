@@ -43,6 +43,8 @@ $shippingAddress->state = "IL";
 $shippingAddress->postalCode = "50001";
 $shippingAddress->country = "840";
 
+$realexHpp = new RealexHpp("secret");
+
 try {
         $hppJson = $service->charge(19.99)
         ->withCurrency("EUR")
@@ -52,7 +54,7 @@ try {
         ->serialize();
         
         // TODO: pass the HPP request JSON to the JavaScript, iOS or Android Library
-        $realexHpp->requestToJson($hppRequest);
+        $requestJson = $realexHpp->requestToJson($hppJson);
         return $requestJson;
         
 } catch (ApiException $e) {
