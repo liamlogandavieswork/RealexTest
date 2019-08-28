@@ -106,7 +106,7 @@ try {
 
 function getAppAccessToken($config, $configParams)
 {
-	error_log($configParams[tenantId"]);
+	error_log($configParams["tenantId"]);
 	error_log($config["username"]);
 	error_log($config["password"]);
 	error_log($config["grant_type"]);
