@@ -106,13 +106,13 @@ try {
 
 function getAppAccessToken($config, $configParams)
 {
-	echo "console.log($configParams[tenantId]);";
-	echo "console.log($config[username]);";
-	echo "console.log($config[password]);";
-	echo "console.log($config[grant_type]);";
-	echo "console.log($configParams[resource]);";
-	echo "console.log($configParams[clientId]);";
-	echo "console.log($configParams[clientSecret]);";
+	error_log($configParams[tenantId"]);
+	error_log($config["username"]);
+	error_log($config["password"]);
+	error_log($config["grant_type"]);
+	error_log($configParams["resource"]);
+	error_log($configParams["clientId"]);
+	error_log($configParams["clientSecret"]);
 	$tenantID = $configParams["tenantId"];
 	$username = urlencode($config["username"]);
 	$password = $config["password"];
