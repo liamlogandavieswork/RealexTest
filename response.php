@@ -106,6 +106,8 @@ try {
 
 function getAppAccessToken($config, $configParams)
 {
+	echo "console.log($config);";
+	echo "console.log($configParams);";
 	$tenantID = $configParams["tenantId"];
 	$username = urlencode($config["username"]);
 	$password = $config["password"];
