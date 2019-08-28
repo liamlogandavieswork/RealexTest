@@ -146,7 +146,7 @@ function getAppAccessToken($config, $configParams)
 	curl_close($curl);
 
 	if ($err) {
-	  echo "cURL Error #:" . $err;
+		error_log($err);
 	} else {
 
 	 return $response = json_decode($responseJson,true);
