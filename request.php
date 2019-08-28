@@ -35,13 +35,13 @@ $RealexMerchantID = $decoded_request["RealexMerchantID"];
 $RealexPaymentURL = $decoded_request["RealexPaymentURL"];
 $RealexSecret = $decoded_request["RealexSecret"];
 $WebApiURL = $decoded_request["WebApiURL"];
-$InvoiceId = $decoded_request["InvoiceId"];
-$InvoiceName = $decoded_request["InvoiceName"];
-$MembershipNumber =$decoded_request["MembershipNumber"]; // CUST_NUM
-$EmailAddress = $decoded_request["EmailAddress"]; // COMMENT1
-$CustomerName = $decoded_request["CustomerName"]; // COMMENT2
-$InvoiceNumber = $decoded_request["InvoiceNumber"]; // VAR_REF
-$ProductCodes = $decoded_request["ProductCodes"]; // PROD_ID
+//$InvoiceId = $decoded_request["InvoiceId"];
+//$InvoiceName = $decoded_request["InvoiceName"];
+//$MembershipNumber =$decoded_request["MembershipNumber"]; // CUST_NUM
+//$EmailAddress = $decoded_request["EmailAddress"]; // COMMENT1
+//$CustomerName = $decoded_request["CustomerName"]; // COMMENT2
+//$InvoiceNumber = $decoded_request["InvoiceNumber"]; // VAR_REF
+//$ProductCodes = $decoded_request["ProductCodes"]; // PROD_ID
 
 $supData = array();
 $supData["CurrencyId"] = $currencyId;
@@ -56,8 +56,8 @@ $supData["RealexMerchantID"] = $RealexMerchantID;
 $supData["RealexPaymentURL"] = $RealexPaymentURL;
 $supData["RealexSecret"] = $RealexSecret;
 $supData["WebApiURL"] = $WebApiURL;
-$supData["InvoiceId"] = $InvoiceId;
-$supData["InvoiceName"] = $InvoiceName;
+//$supData["InvoiceId"] = $InvoiceId;
+//$supData["InvoiceName"] = $InvoiceName;
 
 $merchantId = $RealexMerchantID;
 //$payment_request->MerchantID = $decoded_request["merchant_ID"];
@@ -69,11 +69,11 @@ $hppRequest = (new HppRequest())
     ->addCurrency($currencyId)
     ->addAutoSettleFlag(TRUE)
     ->addSupplementaryData($supData)
-    ->addCustomerNumber($MembershipNumber)
-    ->addCommentOne($EmailAddress)
-    ->addCommentTwo($CustomerName)
-    ->addVariableReference($InvoiceNumber)
-    ->addProductId($ProductCodes)
+    //->addCustomerNumber($MembershipNumber)
+    //->addCommentOne($EmailAddress)
+    //->addCommentTwo($CustomerName)
+    //->addVariableReference($InvoiceNumber)
+    //->addProductId($ProductCodes)
 	->addTimeStamp(date('YmdHis'));
 
 $realexHpp = new RealexHpp($RealexSecret);
