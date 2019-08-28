@@ -29,8 +29,8 @@ $RealexMerchantID = base64_decode($decodedResp["RealexMerchantID"]);
 $RealexPaymentURL = base64_decode($decodedResp["RealexPaymentURL"]);
 $RealexSecret = base64_decode($decodedResp["RealexSecret"]);
 $WebApiURL = base64_decode($decodedResp["WebApiURL"]);
-$InvoiceId = base64_decode($decodedResp["InvoiceId"]);
-$InvoiceName = base64_decode($decodedResp["InvoiceName"]);
+//$InvoiceId = base64_decode($decodedResp["InvoiceId"]);
+//$InvoiceName = base64_decode($decodedResp["InvoiceName"]);
 
 $configParams = [
     'tenantId' => $AzureTenantId,
@@ -46,9 +46,9 @@ try {
 	// CREATE PAYMENT RECORD IN CRM
 	$paymentDataArray = array(
 		'new_contact@odata.bind' => "/contacts($contactId)",
-		'new_name' => 'Payment for: ' . $InvoiceName,
+		'new_name' => 'Payment',
 		'new_paymentdate' => date("Y-m-d"),
-		'new_Invoice@odata.bind' => "/invoices($InvoiceId)",
+		//'new_Invoice@odata.bind' => "/invoices($InvoiceId)",
 		'new_paymentamount' => $amount/100,
 		'new_currency' => $currencyId,
 		'new_transactionstatusmessage' => 'Pending...');
