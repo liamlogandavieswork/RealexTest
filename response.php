@@ -148,7 +148,7 @@ function getAppAccessToken($config, $configParams)
 	if ($err) {
 		error_log($err);
 	} else {
-
+		error_log(json_encode($responseJson, JSON_PRETTY_PRINT));
 	 return $response = json_decode($responseJson,true);
 	}
 }
