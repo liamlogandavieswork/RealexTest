@@ -64,6 +64,7 @@ try {
 	//$creationResponse = useWebApi("POST", $newPaymentData, "new_payments", $config, $configParams);
 	$creationResponse = useWebApi("POST", $newPaymentData, "msevtmgt_FinalizeExternalRegistrationRequest", $config, $configParams);
 
+	error_log(json_encode($creationResponse, JSON_PRETTY_PRINT));
 	$paymentId = getCreatedPaymentGuid($creationResponse);
 
     // create the response object
@@ -148,7 +149,6 @@ function getAppAccessToken($config, $configParams)
 	if ($err) {
 		error_log($err);
 	} else {
-		error_log(json_encode($responseJson, JSON_PRETTY_PRINT));
 	 return $response = json_decode($responseJson,true);
 	}
 }
