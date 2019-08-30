@@ -64,8 +64,8 @@ try {
 	//$creationResponse = useWebApi("POST", $newPaymentData, "new_payments", $config, $configParams);
 	$creationResponse = useWebApi("POST", $newPaymentData, "msevtmgt_FinalizeExternalRegistrationRequest", $config, $configParams);
 
-	error_log(json_encode($creationResponse, JSON_PRETTY_PRINT));
-	$paymentId = getCreatedPaymentGuid($creationResponse);
+	//error_log(json_encode($creationResponse, JSON_PRETTY_PRINT));
+	//$paymentId = getCreatedPaymentGuid($creationResponse);
 
     // create the response object
     $hppResponse = $realexHpp->responseFromJson($responseJson);
@@ -86,7 +86,7 @@ try {
 		useWebApi("PATCH", $updatePaymentData, "new_payments(".$paymentId.")", $config, $configParams);
  */
 		$serverError = "false";
-		$newURL = "{$PortalSuccessURL}?id=".$paymentId;
+		$newURL = "{$PortalSuccessURL}?id=";//.$paymentId;
 		//$newURL = "{$PortalSuccessURL}?message=".$message."&serverError=".$serverError;
 		header('Location: '.$newURL);
 		exit();
@@ -99,7 +99,7 @@ try {
 		useWebApi("PATCH", $updatePaymentData, "new_payments(".$paymentId.")", $config, $configParams);
  */
 		$serverError = "true";
-		$newURL = "{$PortalSuccessURL}?id=".$paymentId;
+		$newURL = "{$PortalSuccessURL}?id=";//.$paymentId;
 		//$newURL = "{$PortalSuccessURL}?message=".$message."&serverError=".$serverError;
 		header('Location: '.$newURL);
 		exit();
