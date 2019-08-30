@@ -2,8 +2,8 @@
 
 return [
     // D365 Setup
-    'username'  => 'ldavies@codec.ie',
-    'password'  => 'Gemma_Strainer_Run_5usc',
+    'username'  => 'codec@irishfunds.ie',
+    'password'  => 'Duz67625',
     'grant_type' => "password"
 ];
 ?>
