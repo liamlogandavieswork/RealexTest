@@ -42,6 +42,8 @@ $WebApiURL = $decoded_request["WebApiURL"];
 //$CustomerName = $decoded_request["CustomerName"]; // COMMENT2
 //$InvoiceNumber = $decoded_request["InvoiceNumber"]; // VAR_REF
 //$ProductCodes = $decoded_request["ProductCodes"]; // PROD_ID
+$PurchaseID = $decoded_request["PurchaseID"];
+$Event = $decoded_request["Event"];
 
 $supData = array();
 $supData["CurrencyId"] = $currencyId;
@@ -58,6 +60,8 @@ $supData["RealexSecret"] = $RealexSecret;
 $supData["WebApiURL"] = $WebApiURL;
 //$supData["InvoiceId"] = $InvoiceId;
 //$supData["InvoiceName"] = $InvoiceName;
+$supData["PurchaseID"] = $PurchaseID;
+$supData["Event"] = $Event;
 
 $merchantId = $RealexMerchantID;
 //$payment_request->MerchantID = $decoded_request["merchant_ID"];

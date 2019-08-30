@@ -31,6 +31,8 @@ $RealexSecret = base64_decode($decodedResp["RealexSecret"]);
 $WebApiURL = base64_decode($decodedResp["WebApiURL"]);
 //$InvoiceId = base64_decode($decodedResp["InvoiceId"]);
 //$InvoiceName = base64_decode($decodedResp["InvoiceName"]);
+$PurchaseID = base64_decode($decodedResp["PurchaseID"]);
+$Event = base64_decode($decodedResp["Event"]);
 
 $configParams = [
     'tenantId' => $AzureTenantId,
@@ -44,18 +46,23 @@ $realexHpp = new RealexHpp($RealexSecret);
 
 try {
 	// CREATE PAYMENT RECORD IN CRM
-	$paymentDataArray = array(
+	/* $paymentDataArray = array(
 		'new_contact@odata.bind' => "/contacts($contactId)",
 		'new_name' => 'Payment',
 		'new_paymentdate' => date("Y-m-d"),
 		//'new_Invoice@odata.bind' => "/invoices($InvoiceId)",
 		'new_paymentamount' => $amount/100,
 		'new_currency' => $currencyId,
-		'new_transactionstatusmessage' => 'Pending...');
+		'new_transactionstatusmessage' => 'Pending...'); */
+	$paymentDataArray = array(
+		'PurchaseId' => $PurchaseID,
+		'ReadableEventId' => $Event,
+		'UserId' => $contactId);
 
 	$newPaymentData = json_encode($paymentDataArray);
 
-	$creationResponse = useWebApi("POST", $newPaymentData, "new_payments", $config, $configParams);
+	//$creationResponse = useWebApi("POST", $newPaymentData, "new_payments", $config, $configParams);
+	$creationResponse = useWebApi("POST", $newPaymentData, "msevtmgt_FinalizeExternalRegistrationRequest", $config, $configParams);
 
 	$paymentId = getCreatedPaymentGuid($creationResponse);
 
@@ -69,14 +76,14 @@ try {
 
 	//UPDATE RECORD IN CRM WITH REALEX RESPONSE
 	if ($result == '00') {
-		$updatePaymentArray = array('new_transactionstatusmessage' => 'Payment Succeeded.',
+		/* $updatePaymentArray = array('new_transactionstatusmessage' => 'Payment Succeeded.',
 			'new_transactioncompleted' => true,
 			'new_transactionid' => $orderID);
 
 		$updatePaymentData = json_encode($updatePaymentArray);
 
 		useWebApi("PATCH", $updatePaymentData, "new_payments(".$paymentId.")", $config, $configParams);
-
+ */
 		$serverError = "false";
 		$newURL = "{$PortalSuccessURL}?id=".$paymentId;
 		//$newURL = "{$PortalSuccessURL}?message=".$message."&serverError=".$serverError;
@@ -84,12 +91,12 @@ try {
 		exit();
 	}
 	else {
-		$updatePaymentArray = array('new_transactionstatusmessage' => $message);
+		/* $updatePaymentArray = array('new_transactionstatusmessage' => $message);
 
 		$updatePaymentData = json_encode($updatePaymentArray);
 
 		useWebApi("PATCH", $updatePaymentData, "new_payments(".$paymentId.")", $config, $configParams);
-
+ */
 		$serverError = "true";
 		$newURL = "{$PortalSuccessURL}?id=".$paymentId;
 		//$newURL = "{$PortalSuccessURL}?message=".$message."&serverError=".$serverError;
