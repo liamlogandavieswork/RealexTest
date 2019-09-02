@@ -6,18 +6,15 @@ require_once ('vendor/autoload.php');
 $config = include('config.php');
 
 // grab the response sent by the client-side library
-$test = implode(" ",$_POST);
-error_log($test);
-$responseJson = $_POST['data'];
+$request = file_get_contents('php://input');
+$decoded_request = json_decode($request, true);
 
-$decodedResp = json_decode($responseJson, true);
-
-$AzureApplicationID = base64_decode($decodedResp["AzureApplicationID"]);
-$AzureApplicationSecret = base64_decode($decodedResp["AzureApplicationSecret"]);
-$AzureTenantId = base64_decode($decodedResp["AzureTenantId"]);
-$CRMServerURL = base64_decode($decodedResp["CRMServerURL"]);
-$WebApiURL = base64_decode($decodedResp["WebApiURL"]);
-$PurchaseID = base64_decode($decodedResp["PurchaseID"]);
+$AzureApplicationID = $decoded_request["AzureApplicationID"];
+$AzureApplicationSecret = $decoded_request["AzureApplicationSecret"];
+$AzureTenantId = $decoded_request["AzureTenantId"];
+$CRMServerURL = $decoded_request["CRMServerURL"];
+$WebApiURL = $decoded_request["WebApiURL"];
+$PurchaseID = $decoded_request["PurchaseID"];
 
 $configParams = [
     'tenantId' => $AzureTenantId,
