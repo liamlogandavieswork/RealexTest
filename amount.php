@@ -33,8 +33,8 @@ $result = explode('Result":"',$actionResponse)[1];
 $cleanedResponse = str_replace("\\","",$result);
 $cleanedResponse = substr($cleanedResponse, 0, -2);
 error_log($cleanedResponse);
-$response = json_encode($cleanedResponse);
-return $response;
+//$response = json_encode($cleanedResponse);
+return $cleanedResponse;
 
 function getAppAccessToken($config, $configParams)
 {
