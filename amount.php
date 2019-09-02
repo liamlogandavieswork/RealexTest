@@ -23,14 +23,14 @@ $configParams = [
     'clientSecret' => $AzureApplicationSecret,
     'webApiURL' => $WebApiURL
     ];
-error_log($PurchaseID);
+    
 $paymentDataArray = array(
     'PurchaseId' => $PurchaseID);
 
 $Data = json_encode($paymentDataArray);
 $actionResponse = useWebApi("POST", $Data, "msevtmgt_GetPurchaseDetailsAction", $config, $configParams);
 
-$response->requestToJson($actionResponse);
+$response = json_encode($actionResponse);
 return $response;
 
 function getAppAccessToken($config, $configParams)
