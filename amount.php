@@ -29,7 +29,7 @@ $paymentDataArray = array(
 
 $Data = json_encode($paymentDataArray);
 $actionResponse = useWebApi("POST", $Data, "msevtmgt_GetPurchaseDetailsAction", $config, $configParams);
-$response = json_encode($actionResponse["Result"]);
+$response = json_decode($actionResponse["Result"], true);
 error_log($response);
 return $response;
 
