@@ -82,7 +82,7 @@ function useWebApi($method, $data, $odata, $config, $configParams) {
 //GET APP ACCESS TOKEN
 	$token = getAppAccessToken($config, $configParams);
 	$url = $configParams["webApiURL"];
-	echo "console.log('PHP.RealexIntegrationAzure.Response.WebApiUrl: ' + $url);";
+	//echo "console.log('PHP.RealexIntegrationAzure.Response.WebApiUrl: ' + $url);";
 	$curl = curl_init();
 	curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
 	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
