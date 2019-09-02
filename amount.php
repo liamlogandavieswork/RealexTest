@@ -31,7 +31,7 @@ $Data = json_encode($paymentDataArray);
 $actionResponse = useWebApi("POST", $Data, "msevtmgt_GetPurchaseDetailsAction", $config, $configParams);
 $result = explode('Result":"',$actionResponse)[1];
 $cleanedResponse = str_replace("\\","",$result);
-$cleanedResponse = rtrim($cleanedResponse, '"}');
+$cleanedResponse = substr($cleanedResponse, 0, -2);
 error_log($cleanedResponse);
 $response = json_encode($cleanedResponse);
 return $response;
