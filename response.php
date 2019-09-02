@@ -86,7 +86,7 @@ try {
 		useWebApi("PATCH", $updatePaymentData, "new_payments(".$paymentId.")", $config, $configParams);
  */
 		$serverError = "false";
-		$newURL = "{$PortalSuccessURL}?id=";//.$paymentId;
+		$newURL = $PortalSuccessURL
 		//$newURL = "{$PortalSuccessURL}?message=".$message."&serverError=".$serverError;
 		header('Location: '.$newURL);
 		exit();
@@ -99,7 +99,7 @@ try {
 		useWebApi("PATCH", $updatePaymentData, "new_payments(".$paymentId.")", $config, $configParams);
  */
 		$serverError = "true";
-		$newURL = "{$PortalSuccessURL}?id=";//.$paymentId;
+		$newURL = $PortalSuccessURL;
 		//$newURL = "{$PortalSuccessURL}?message=".$message."&serverError=".$serverError;
 		header('Location: '.$newURL);
 		exit();
