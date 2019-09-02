@@ -29,8 +29,8 @@ $paymentDataArray = array(
 
 $Data = json_encode($paymentDataArray);
 $actionResponse = useWebApi("POST", $Data, "msevtmgt_GetPurchaseDetailsAction", $config, $configParams);
-$result = explode('Result',$actionResponse);
-$cleanedResponse = str_replace("\\","",$result[1]);
+$result = explode('Result',$actionResponse)[1];
+$cleanedResponse = str_replace("\\","",$result);
 $response = json_encode($cleanedResponse);
 return $response;
 
