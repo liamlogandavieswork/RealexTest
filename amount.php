@@ -29,10 +29,9 @@ $paymentDataArray = array(
 
 $Data = json_encode($paymentDataArray);
 $actionResponse = useWebApi("POST", $Data, "msevtmgt_GetPurchaseDetailsAction", $config, $configParams);
-$jsonresponse = json_encode($actionResponse);
-$cleanedResponse = str_replace("\\","",$jsonresponse["Result"]);
+$result = explode('Result": ',$actionResponse);
+$cleanedResponse = str_replace("\\","",$result[1]);
 $response = json_encode($cleanedResponse);
-error_log($response);
 return $response;
 
 function getAppAccessToken($config, $configParams)
