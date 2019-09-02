@@ -8,7 +8,7 @@ $config = include('config.php');
 // grab the response sent by the client-side library
 $request = file_get_contents('php://input');
 $decoded_request = json_decode($request, true);
-$test = implode(" ",$decoded_request)
+$test = implode(" ",$decoded_request);
 error_log($test);
 
 $AzureApplicationID = $decoded_request["AzureApplicationID"];
