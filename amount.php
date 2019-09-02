@@ -6,7 +6,8 @@ require_once ('vendor/autoload.php');
 $config = include('config.php');
 
 // grab the response sent by the client-side library
-error_log($_POST);
+$test = implode(" ",$_POST);
+error_log($test);
 $responseJson = $_POST['data'];
 
 $decodedResp = json_decode($responseJson, true);
