@@ -30,7 +30,7 @@ $paymentDataArray = array(
 $Data = json_encode($paymentDataArray);
 $actionResponse = useWebApi("POST", $Data, "msevtmgt_GetPurchaseDetailsAction", $config, $configParams);
 //$response = json_decode($actionResponse);
-//error_log($response);
+error_log($actionResponse);
 return $actionResponse;
 
 function getAppAccessToken($config, $configParams)
