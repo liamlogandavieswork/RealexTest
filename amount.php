@@ -34,6 +34,7 @@ $cleanedResponse = str_replace("\\","",$result);
 $cleanedResponse = substr($cleanedResponse, 0, -2);
 //error_log($cleanedResponse);
 //$response = json_encode($cleanedResponse);
+echo $cleanedResponse;
 return $cleanedResponse;
 
 function getAppAccessToken($config, $configParams)
