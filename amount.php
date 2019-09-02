@@ -29,8 +29,8 @@ $paymentDataArray = array(
 
 $Data = json_encode($paymentDataArray);
 $actionResponse = useWebApi("POST", $Data, "msevtmgt_GetPurchaseDetailsAction", $config, $configParams);
-error_log($actionResponse);
-$response = json_encode($actionResponse);
+//error_log($actionResponse);
+$response = json_encode($actionResponse["Result"]);
 return $response;
 
 function getAppAccessToken($config, $configParams)
