@@ -32,9 +32,9 @@ $actionResponse = useWebApi("POST", $Data, "msevtmgt_GetPurchaseDetailsAction", 
 $result = explode('Result":"',$actionResponse)[1];
 $cleanedResponse = str_replace("\\","",$result);
 $cleanedResponse = substr($cleanedResponse, 0, -2);
-error_log($cleanedResponse);
-$response = json_encode($cleanedResponse);
-return $response;
+//error_log($cleanedResponse);
+//$response = json_encode($cleanedResponse);
+return $cleanedResponse;
 
 function getAppAccessToken($config, $configParams)
 {
