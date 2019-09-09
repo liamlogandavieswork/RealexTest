@@ -32,6 +32,7 @@ $AzureTenantId = $decoded_request["AzureTenantId"];
 $CRMServerURL = $decoded_request["CRMServerURL"];
 $PortalSuccessURL = $decoded_request["PortalSuccessURL"];
 $RealexMerchantID = $decoded_request["RealexMerchantID"];
+$RealexAccount = $decoded_request["RealexAccount"];
 $RealexPaymentURL = $decoded_request["RealexPaymentURL"];
 $RealexSecret = $decoded_request["RealexSecret"];
 $WebApiURL = $decoded_request["WebApiURL"];
@@ -55,6 +56,7 @@ $supData["AzureTenantId"] = $AzureTenantId;
 $supData["CRMServerURL"] = $CRMServerURL;
 $supData["PortalSuccessURL"] = $PortalSuccessURL;
 $supData["RealexMerchantID"] = $RealexMerchantID;
+$supData["RealexAccount"] = $RealexAccount;
 $supData["RealexPaymentURL"] = $RealexPaymentURL;
 $supData["RealexSecret"] = $RealexSecret;
 $supData["WebApiURL"] = $WebApiURL;
@@ -64,11 +66,12 @@ $supData["PurchaseID"] = $PurchaseID;
 $supData["Event"] = $Event;
 
 $merchantId = $RealexMerchantID;
+$account = $RealexAccount;
 //$payment_request->MerchantID = $decoded_request["merchant_ID"];
 
 $hppRequest = (new HppRequest())
     ->addMerchantId($merchantId)
-    ->addAccount("internet")
+    ->addAccount($account)
     ->addAmount($amount * 100) // realex takes the amount with no decimals
     ->addCurrency($currencyId)
     ->addAutoSettleFlag(TRUE)
